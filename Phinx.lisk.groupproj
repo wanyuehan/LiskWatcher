@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0B23CB08-4418-4041-AD58-455A6EF164CF}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="LiskWatcher.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="LiskWatcher">
+        <MSBuild Projects="LiskWatcher.cbproj"/>
+    </Target>
+    <Target Name="LiskWatcher:Clean">
+        <MSBuild Projects="LiskWatcher.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="LiskWatcher:Make">
+        <MSBuild Projects="LiskWatcher.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="LiskWatcher"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="LiskWatcher:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="LiskWatcher:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
